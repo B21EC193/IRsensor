@@ -1,0 +1,32 @@
+Liquid crystal lcd(12,10,6,5,4,3);
+int sensor= 2;
+int led= 7;
+int buzzer=8;
+Void setup()
+{
+pinMode(sensor,INPUT);
+pinMode(led, OUTPUT);
+pinMode(buzzer, OUTPUT);
+
+lcd.begin(16,2);
+lcd.print("Sensor ready");
+}
+Void loop()
+{
+int sensorstatus=digitalRead(sensor);
+if(sensorstatus==1)
+{
+digitalWrite(led,HIGH);
+digitalWrite (buzzer, HIGH);
+lcd.print("Motion Ended");
+lcd.clear();
+}
+else
+{
+digitalWrite(led,LOW);
+digitalWrite (buzzer,LOW);
+lcd.print("Motion Detected");
+lcd.clear();
+}
+delay(500);
+}
